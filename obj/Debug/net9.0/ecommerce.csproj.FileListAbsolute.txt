@@ -1,0 +1,14 @@
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\bin\Debug\net9.0\ecommerce.exe
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\bin\Debug\net9.0\ecommerce.deps.json
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\bin\Debug\net9.0\ecommerce.runtimeconfig.json
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\bin\Debug\net9.0\ecommerce.dll
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\bin\Debug\net9.0\ecommerce.pdb
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\obj\Debug\net9.0\ecommerce.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\obj\Debug\net9.0\ecommerce.AssemblyInfoInputs.cache
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\obj\Debug\net9.0\ecommerce.AssemblyInfo.cs
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\obj\Debug\net9.0\ecommerce.csproj.CoreCompileInputs.cache
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\obj\Debug\net9.0\ecommerce.dll
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\obj\Debug\net9.0\refint\ecommerce.dll
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\obj\Debug\net9.0\ecommerce.pdb
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\obj\Debug\net9.0\ecommerce.genruntimeconfig.cache
+C:\Users\LloydTonyKatila\OneDrive - Syncfusion\Documents\SyncFusion Workspace\Personal Developement\dbconcepts\ecommerce\obj\Debug\net9.0\ref\ecommerce.dll
