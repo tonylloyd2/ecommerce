@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "w7z1kg1qF6g=",
+  "dgSpecHash": "i7QGQ4CiVeM=",
   "success": true,
   "projectFilePath": "C:\\Users\\LloydTonyKatila\\OneDrive - Syncfusion\\Documents\\SyncFusion Workspace\\Personal Developement\\dbconcepts\\ecommerce\\ecommerce.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\LloydTonyKatila\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

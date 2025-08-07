@@ -1,0 +1,15 @@
+[*.cs]
+# CS8603: Possible null reference return.
+dotnet_diagnostic.CS8603.severity = none
+
+# CS8602: Dereference of a possibly null reference.
+dotnet_diagnostic.CS8602.severity = none
+
+# CS8625: Cannot convert null literal to non-nullable reference type.
+dotnet_diagnostic.CS8625.severity = none
+
+# IDE0002: Simplify Member Access
+dotnet_diagnostic.IDE0002.severity = none
+
+# CS8601: Possible null reference assignment.
+dotnet_diagnostic.CS8601.severity = none

@@ -1,5 +1,7 @@
 using System;
 using System.Diagnostics.Contracts;
+using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace ecommerce;
 /*
@@ -17,70 +19,65 @@ DeductBalance: Get the deducted amount through parameters and update wallet bala
 */
 public class Customer
 {
+#pragma warning disable CS8600 // Converting null literal or possible null value to non-nullable type.
+#pragma warning disable CS8602 // Converting null literal or possible null value to non-nullable type.
 
-    public string? CustomerName { get; set; }
-    public string? City { get; set; }
-    private string? MobileNumber { get; set; }
-    private int WalletBalance { get; set; }
+
+    public  string CustomerName { get; set; }
+    public string City { get; set; }
+    private string MobileNumber { get; set; }
+    private  int WalletBalance { get; set; }
     private string EmailID { get; set; }
 
     public string CustomerID { get; set; }
 
-    public Customer(string customername, string city, string mobilenumber, int walletbalance, string emailid)
+    public Customer(string customername, string city, string mobilenumber, int walletbalance, string emailid,string customerID)
     {
         CustomerName = customername;
         City = city;
         MobileNumber = mobilenumber;
         WalletBalance = walletbalance;
         EmailID = emailid;
-        CustomerID = GetCustomerIdIndexCount("./data/counters/customer-id-counter.txt");
-        UpdateCustomerIdIndexCount("./data/counters/customer-id-counter.txt");
+        CustomerID = customerID;
+        Methods.UpdateIdIndexCount("./data/counters/customer-id-counter.txt");
     }
-
-    public static string GetCustomerIdIndexCount(string filepath)
+    public  int getWalletBalance()
     {
-        int counter = Convert.ToInt32(File.ReadAllText(filepath));
-
-        return "CID" + counter.ToString();
+        return WalletBalance;
     }
-    public static void UpdateCustomerIdIndexCount(string filepath)
-    {
-        int counter = Convert.ToInt32(File.ReadAllText(filepath));
-        counter += 1;
-        File.WriteAllText(filepath, counter.ToString());
-
-
-    }
-    public static Customer Register()
-    {
-        System.Console.WriteLine("Enter your full names : ");
-        var customername = System.Console.ReadLine();
-
-        System.Console.WriteLine("Enter your city : ");
-        var city = System.Console.ReadLine();
-
-        System.Console.WriteLine("Enter your mobile number : ");
-        var mobilenumber = System.Console.ReadLine();
-
-        int walletbalance;
-        do
-        {
-         System.Console.WriteLine("Enter initial wallet balance : ");
-         walletbalance = int.Parse(Console.ReadLine());
-            // walletbalance.All(char.IsDigit) == false;
-        } while (Convert.ToInt32(walletbalance) <= 0 );
-        
-        System.Console.WriteLine("Enter your email id : ");
-        var emailid = System.Console.ReadLine();
-
-        return new Customer(customername,city,mobilenumber,walletbalance,emailid);
-    }
-
-    
 
     public object SerializeCustomerData()
     {
         return new { CustomerID, CustomerName, City, MobileNumber, WalletBalance, EmailID };
     }
+
+    
+    public static async Task WalletRecharge(string CustomerID, int recharge_amount,int walletbalance)
+    {
+        string[] users_arr = await Methods.GetFileContent("./data/users/customers.txt", null);
+        Customer customer_obj = null;
+
+        int counter = 0;
+        foreach (var line in users_arr)
+        {
+            if (users_arr[counter].Contains(CustomerID))
+            {
+                customer_obj = JsonSerializer.Deserialize<Customer>(users_arr[counter]);
+                walletbalance += recharge_amount;
+                users_arr[counter] = JsonSerializer.Serialize<Customer>(customer_obj);
+                break;
+            }
+        }
+        // update the content to the user in db file
+        Methods.WriteTofile("./data/users/customers.txt", users_arr);
+
+    }
+    // public static  string getUsersDeatqails()
+    // {
+    //     return CustomerName.ToString();
+    // }
+
+#pragma warning restore CS8600
+#pragma warning restore CS8602
 
 }

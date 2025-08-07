@@ -1,0 +1,6 @@
+{"ProductId":"PID1009","ProductName":"awsecew","StockQuantity":1993,"PricePerItem":2.0,"ShippingDuration":35}
+{"ProductId":"PID1006","ProductName":"awsecew","StockQuantity":23,"PricePerItem":2,"ShippingDuration":3}
+{"ProductId":"PID1007","ProductName":"serg","StockQuantity":293,"PricePerItem":20,"ShippingDuration":56}
+{"ProductId":"PID1008","ProductName":"awsecew","StockQuantity":223,"PricePerItem":24,"ShippingDuration":23}
+{"ProductId":"PID1010","ProductName":"awsecew","StockQuantity":2377,"PricePerItem":2.0,"ShippingDuration":53}
+{"ProductId":"PID1011","ProductName":"awsecew","StockQuantity":2223,"PricePerItem":25,"ShippingDuration":43}
