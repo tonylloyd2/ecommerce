@@ -9,6 +9,22 @@ public class Methods
 
 
 
+    public static async Task<string> GetSingleObjectFromTxt(string filePath, string searchtext,string searchtext2)
+    {
+
+        string[]? lines = await GetFileContent(filePath, null);
+        // search for the line object
+        int counter = 0;
+        foreach (var item in lines)
+        {
+            if (item.Contains(searchtext) && lines.Contains(searchtext2))
+            {
+                return item;
+            }
+            counter++;
+        }
+        return default;
+    }
 
     public static async Task<string> GetSingleObjectFromTxt(string filePath, string searchtext)
     {

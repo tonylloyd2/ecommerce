@@ -25,9 +25,9 @@ public class Customer
 
     public  string CustomerName { get; set; }
     public string City { get; set; }
-    private string MobileNumber { get; set; }
-    private  int WalletBalance { get; set; }
-    private string EmailID { get; set; }
+    public string MobileNumber { get; set; }
+    public  int WalletBalance { get; set; }
+    public string EmailID { get; set; }
 
     public string CustomerID { get; set; }
 
@@ -51,8 +51,9 @@ public class Customer
         return new { CustomerID, CustomerName, City, MobileNumber, WalletBalance, EmailID };
     }
 
+        
     
-    public static async Task WalletRecharge(string CustomerID, int recharge_amount,int walletbalance)
+    public static async Task WalletRecharge(string CustomerID, int recharge_amount, int walletbalance)
     {
         string[] users_arr = await Methods.GetFileContent("./data/users/customers.txt", null);
         Customer customer_obj = null;
@@ -69,7 +70,7 @@ public class Customer
             }
         }
         // update the content to the user in db file
-        Methods.WriteTofile("./data/users/customers.txt", users_arr);
+        await Methods.WriteTofile("./data/users/customers.txt", users_arr);
 
     }
     // public static  string getUsersDeatqails()

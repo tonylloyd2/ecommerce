@@ -125,6 +125,14 @@ public class Program
                                             lines = lines.Replace(line,insert_prod);
                                             File.WriteAllText("./data/products/products-list.txt", lines);
                                             await Methods.EventLog(product.ProductId, "Update", DateTime.Now.ToString(), "system", "Product updated", $"previous stock = {ls_product[0].StockQuantity}", $"new stock = {ls_product[0].StockQuantity - Quantity}");
+                                            string get_customer = await Methods.GetSingleObjectFromTxt("./data/users/customers.txt", Logincredentials[0]);
+                                            string get_customers = await Methods.GetFileContent("./data/users/customers.txt");
+                                            customer_obj = JsonConvert.DeserializeObject<Customer>(get_customer);                                
+                                            customer_obj.WalletBalance = customer_obj.getWalletBalance() - (int)totalamount;
+                                            string new_wallet = JsonConvert.SerializeObject(customer_obj);
+                                            get_customers = get_customers.Replace(get_customer,new_wallet);
+                                            await File.WriteAllTextAsync("./data/users/customers.txt",get_customers);
+
                                             continue;
                                         }
                                     }
@@ -145,7 +153,7 @@ public class Program
                             else if (result == 'b')
                             {
                                 Constants.DefaultMessagePrinter("Orders history 📅");
-                                string[] orders = await Methods.GetFileContent("./data/events/orders-history.txt", null);
+                                string[] orders = await Methods.GetFileContent("./data/orders/orders.txt", null);
                                 Constants.DefaultMessagePrinter(orders, Logincredentials[0]);
                                 continue;
                             }
@@ -154,6 +162,7 @@ public class Program
                                 Constants.DefaultMessagePrinter("Cancel order ❌❌");
 
                                 string[]? orders_user = await Methods.GetFileContent("./data/orders/orders.txt", null);
+                                string order_lines = await Methods.GetFileContent("./data/orders/orders.txt");
                                 Constants.DefaultMessagePrinter(orders_user, Logincredentials[0]);
                                 System.Console.WriteLine("Enter order id to cancel ");
                                 string _orderidCancel = System.Console.ReadLine();
@@ -161,40 +170,96 @@ public class Program
                                 string order_line_tocancel = await Methods.GetSingleObjectFromTxt("./data/orders/orders.txt", _orderidCancel);
                                 if (order_line_tocancel == null)
                                 {
-                                    Constants.DefaultMessagePrinter("Invalid id");
+                                    Constants.DefaultMessagePrinter("Invalid id or order status is already canceled");
                                     continue; 
                                 }
                                 
-                                Orders ord_line_obj = JsonConvert.DeserializeObject<Orders>(order_line_tocancel);
+                                // stus of the order to Cancelled
+                                Orders? ord_line_obj = JsonConvert.DeserializeObject<Orders>(order_line_tocancel);
                                 ord_line_obj.OrderStatus = "Canceled";
-                                ProductDetails new_ = product;
-                                new_.StockQuantity = product.StockQuantity - Quantity;
-                                string lines = File.ReadAllText("./data/products/products-list.txt");
-                                // deduct  quantity 
+                                string ord_cid = ord_line_obj.CustomerID;
+                                string ord_pid = ord_line_obj.ProductID;
+                                string ord_oid = ord_line_obj.OrderID;
+                                int ord_quatity = ord_line_obj.Quantity;
+                                float ord_price = (float)ord_line_obj.TotalPrice;
+                                // update orders lines
+                                string order_line_to_update = JsonConvert.SerializeObject(ord_line_obj);
+                                // get the orders array and update it and write to files
+                                order_lines = order_lines.Replace(order_line_tocancel,order_line_to_update);
+                                File.WriteAllText("./data/orders/orders.txt", order_lines);
 
+                                //update the  stock quantity
+                                string[]? products_arr = await Methods.GetFileContent("./data/products/products-list.txt", null);
+                                string prod_lines = await Methods.GetFileContent("./data/products/products-list.txt");
+                                string prod_line_previous = "";
+                                string prod_line_update = "";
 
-                                
-                                string insert_prod = JsonConvert.SerializeObject(new_.SerializeProductData());
-                                System.Console.WriteLine("new = "+ insert_prod);
-                                System.Console.WriteLine("prev = "+ line);
-                                lines = lines.Replace(line,insert_prod);
-                                File.WriteAllText("./data/products/products-list.txt", lines);
-                                await Methods.EventLog(product.ProductId, "Update", DateTime.Now.ToString(), "system", "Product updated", $"previous stock = {ls_product[0].StockQuantity}", $"new stock = {ls_product[0].StockQuantity - Quantity}");
-                                
-                                
+                                int i = 0;
+                                foreach (var item in products_arr)
+                                {
+                                    // get the product id line 
+                                    if (item.Contains(ord_pid))
+                                    {
+                                        prod_line_previous = item;
+                                        ProductDetails? prod_obj = JsonConvert.DeserializeObject<ProductDetails>(item);
+                                        prod_obj.StockQuantity += ord_line_obj.Quantity;
+                                        prod_line_update = JsonConvert.SerializeObject(prod_obj);
+                                        break;
+                                    }
+                                }
+                                prod_lines = prod_lines.Replace(prod_line_previous,prod_line_update);
+                                // Write to file 
+                                // System.Console.WriteLine($"prev prod = {prod_line_previous}");
+                                // System.Console.WriteLine($"Update prod = {prod_line_update}");
+                                await File.WriteAllTextAsync("./data/products/products-list.txt", prod_lines);
+
+                                // refund the user wallet
+
+                                string get_customer = await Methods.GetSingleObjectFromTxt("./data/users/customers.txt", Logincredentials[0]);
+                                string get_customers = await Methods.GetFileContent("./data/users/customers.txt");
+                                customer_obj = JsonConvert.DeserializeObject<Customer>(get_customer);
+                                System.Console.WriteLine($"user object = {get_customer}");
+                                System.Console.WriteLine($"allet balance {customer_obj.getWalletBalance()}");
+                                System.Console.WriteLine($"new wallet balance {customer_obj.getWalletBalance() + ord_price}");
+                                customer_obj.WalletBalance = customer_obj.getWalletBalance() + (int)ord_price;
+
+                                string new_wallet = JsonConvert.SerializeObject(customer_obj);
+
+                                get_customers = get_customers.Replace(get_customer,new_wallet);
+                                await File.WriteAllTextAsync("./data/users/customers.txt",get_customers);
+
                                 continue;
                             }
                             else if (result == 'd')
                             {
                                 Constants.DefaultMessagePrinter("Wallet Ballance 🤑🤑");
+                                string get_customer = await Methods.GetSingleObjectFromTxt("./data/users/customers.txt", Logincredentials[0]);
+                                customer_obj = JsonConvert.DeserializeObject<Customer>(get_customer);                                
+                                System.Console.WriteLine($"allet balance {customer_obj.getWalletBalance()}");
 
                                 continue;
                             }
                             else if (result == 'e')
                             {
-                                Constants.DefaultMessagePrinter("Wallet Recharge ➕💰");
+                                Constants.DefaultMessagePrinter("Wallet Recharge ➕💰\nEnter amount to recharge");
+                                int amount = Convert.ToInt32(System.Console.ReadLine());
+
+                                string get_customer = await Methods.GetSingleObjectFromTxt("./data/users/customers.txt", Logincredentials[0]);
+                                string get_customers = await Methods.GetFileContent("./data/users/customers.txt");
+                                customer_obj = JsonConvert.DeserializeObject<Customer>(get_customer);
+                                System.Console.WriteLine($"user object = {get_customer}");
+                                System.Console.WriteLine($"allet balance {customer_obj.getWalletBalance()}");
+                                System.Console.WriteLine($"new wallet balance {customer_obj.getWalletBalance() + amount}");
+                                customer_obj.WalletBalance = customer_obj.getWalletBalance() + amount;
+                                string new_wallet = JsonConvert.SerializeObject(customer_obj);
+                                get_customers = get_customers.Replace(get_customer,new_wallet);
+                                await File.WriteAllTextAsync("./data/users/customers.txt",get_customers);
 
                                 continue;
+                            }
+                            else if ( result == 'f')
+                            {
+                                break;
                             }
 
                             else

@@ -1,4 +1,5 @@
-{"CustomerID":"CID3000","CustomerName":"lloyd katila","City":"kisum","MobileNumber":"12345678","WalletBalance":3456,"EmailID":"wvefs@aewvew.wae"}
+{"CustomerName":"lloyd katila","City":"kisum","MobileNumber":"12345678","WalletBalance":4456,"EmailID":"wvefs@aewvew.wae","CustomerID":"CID3000"}
 {"CustomerID":"CID3001","CustomerName":"ewcvd weavds","City":"weads","MobileNumber":"awevbrwewrbsf","WalletBalance":65432,"EmailID":"wavw@AWEfcwe.waef"}
 {"CustomerID":"CID3002","CustomerName":"serdtfgyhkjk","City":"sdefghj","MobileNumber":"234567890","WalletBalance":1234,"EmailID":"sdrfgh"}
 {"CustomerID":"CID3034","CustomerName":"collins","City":"wears","MobileNumber":"waers","WalletBalance":56789,"EmailID":"sdefrgth"}
+{"CustomerName":"Antony Otirno","City":"sdsd","MobileNumber":"0792323#","WalletBalance":1000,"EmailID":"asas","CustomerID":"CID3051"}

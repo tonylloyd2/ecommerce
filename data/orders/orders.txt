@@ -1,11 +1,11 @@
-{"OrderID":"OID4000","CustomerID":"CID3000","ProductID":"PID1009","TotalPrice":40,"PurchaseDate":"07/08/2025 13:19:30","Quantity":20,"OrderStatus":"Ordered"}
+{"OrderID":"OID4018","CustomerID":"CID3000","ProductID":"PID1011","TotalPrice":75.0,"PurchaseDate":"07/08/2025 14:45:23","Quantity":3,"OrderStatus":"Canceled"}
 {"OrderID":"OID4001","CustomerID":"CID3000","ProductID":"PID1009","TotalPrice":110,"PurchaseDate":"07/08/2025 13:26:38","Quantity":55,"OrderStatus":"Ordered"}
 {"OrderID":"OID4002","CustomerID":"CID3000","ProductID":"PID1009","TotalPrice":600,"PurchaseDate":"07/08/2025 13:49:17","Quantity":300,"OrderStatus":"Ordered"}
 {"OrderID":"OID4003","CustomerID":"CID3000","ProductID":"PID1009","TotalPrice":14,"PurchaseDate":"07/08/2025 14:00:27","Quantity":7,"OrderStatus":"Ordered"}
 {"OrderID":"OID4004","CustomerID":"CID3000","ProductID":"PID1009","TotalPrice":578,"PurchaseDate":"07/08/2025 14:05:04","Quantity":289,"OrderStatus":"Ordered"}
 {"OrderID":"OID4005","CustomerID":"CID3000","ProductID":"PID1009","TotalPrice":6,"PurchaseDate":"07/08/2025 14:08:04","Quantity":3,"OrderStatus":"Ordered"}
 {"OrderID":"OID4006","CustomerID":"CID3000","ProductID":"PID1006","TotalPrice":22,"PurchaseDate":"07/08/2025 14:10:29","Quantity":11,"OrderStatus":"Ordered"}
-{"OrderID":"OID4007","CustomerID":"CID3000","ProductID":"PID1006","TotalPrice":6,"PurchaseDate":"07/08/2025 14:12:42","Quantity":3,"OrderStatus":"Ordered"}
+{"OrderID":"OID4007","CustomerID":"CID3000","ProductID":"PID1006","TotalPrice":6.0,"PurchaseDate":"07/08/2025 14:12:42","Quantity":3,"OrderStatus":"Canceled"}
 {"OrderID":"OID4008","CustomerID":"CID3000","ProductID":"PID1006","TotalPrice":4,"PurchaseDate":"07/08/2025 14:14:04","Quantity":2,"OrderStatus":"Ordered"}
 {"OrderID":"OID4009","CustomerID":"CID3000","ProductID":"PID1006","TotalPrice":6,"PurchaseDate":"07/08/2025 14:18:43","Quantity":3,"OrderStatus":"Ordered"}
 {"OrderID":"OID4010","CustomerID":"CID3000","ProductID":"PID1006","TotalPrice":4,"PurchaseDate":"07/08/2025 14:23:14","Quantity":2,"OrderStatus":"Ordered"}
@@ -20,3 +20,10 @@
 {"OrderID":"OID4019","CustomerID":"CID3000","ProductID":"PID1011","TotalPrice":575,"PurchaseDate":"07/08/2025 15:00:53","Quantity":23,"OrderStatus":"Ordered"}
 {"OrderID":"OID4020","CustomerID":"CID3034","ProductID":"PID1010","TotalPrice":866,"PurchaseDate":"07/08/2025 15:03:34","Quantity":433,"OrderStatus":"Ordered"}
 {"OrderID":"OID4021","CustomerID":"CID3034","ProductID":"PID1010","TotalPrice":112,"PurchaseDate":"07/08/2025 15:05:37","Quantity":56,"OrderStatus":"Ordered"}
+{"OrderID":"OID4024","CustomerID":"CID3000","ProductID":"PID1006","TotalPrice":40.0,"PurchaseDate":"08/08/2025 11:43:34","Quantity":20,"OrderStatus":"Canceled"}
+{"OrderID":"OID4025","CustomerID":"CID3000","ProductID":"PID1008","TotalPrice":72.0,"PurchaseDate":"08/08/2025 11:44:21","Quantity":3,"OrderStatus":"Canceled"}
+{"OrderID":"OID4027","CustomerID":"CID3000","ProductID":"PID1008","TotalPrice":288.0,"PurchaseDate":"08/08/2025 12:00:57","Quantity":12,"OrderStatus":"Canceled"}
+{"OrderID":"OID4031","CustomerID":"CID3000","ProductID":"PID1008","TotalPrice":288.0,"PurchaseDate":"08/08/2025 12:20:03","Quantity":12,"OrderStatus":"Canceled"}
+{"OrderID":"OID4033","CustomerID":"CID3000","ProductID":"PID1008","TotalPrice":240.0,"PurchaseDate":"08/08/2025 12:28:10","Quantity":10,"OrderStatus":"Canceled"}
+{"OrderID":"OID4037","CustomerID":"CID3000","ProductID":"PID1010","TotalPrice":20.0,"PurchaseDate":"08/08/2025 13:26:16","Quantity":10,"OrderStatus":"Canceled"}
+{"OrderID":"OID4039","CustomerID":"CID3051","ProductID":"PID1011","TotalPrice":50.0,"PurchaseDate":"08/08/2025 14:03:17","Quantity":2,"OrderStatus":"Canceled"}
